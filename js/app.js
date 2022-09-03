@@ -11,6 +11,7 @@ const loadNews = () =>{
       .catch(error => console.log(error))
 }
 
+// loader spinners add
 const loader = isLoad => {
   const loader = document.getElementById('page-loader');
   if (isLoad) {
@@ -21,6 +22,7 @@ const loader = isLoad => {
   }
 }
 
+//Default category show
 const dafaultCategoriesShow = () =>{
   let url = `https://openapi.programming-hero.com/api/news/category/01`
       fetch(url)
@@ -29,7 +31,7 @@ const dafaultCategoriesShow = () =>{
       // Error handeling
       .catch(error => console.log(error))
 }
-//Default Categories
+//Default Categories function
 dafaultCategoriesShow()
 
 // Dynamic navbar 
@@ -46,7 +48,7 @@ const navbarItems = (navitems) =>{
   
 }
 
-// all cetegories  show
+//All cetegories  show
 const displayDetails = (Id) =>{
   loader(true);
   let url = `https://openapi.programming-hero.com/api/news/category/${Id}`
@@ -56,7 +58,7 @@ const displayDetails = (Id) =>{
       // Error handeling
       .catch(error => console.log(error))
 }
-// categories details 
+//Categories details 
 const CetegoriesDetails = (newsPosts) =>{
   let totalNewsItem = newsPosts.length
   let categoryShowing = document.getElementById('category-showing')
@@ -66,7 +68,7 @@ const CetegoriesDetails = (newsPosts) =>{
       categoryShowing.appendChild(h6)
   let categoriesDiv = document.getElementById('categoryShow')
       categoriesDiv.innerHTML = ' '
-      // sorting the arry by total number
+      // sorting the arry by total Viewers
   let newsSorting =  newsPosts.sort(function(a,b){
           return b.total_view - a.total_view
   })
@@ -113,7 +115,7 @@ const CetegoriesDetails = (newsPosts) =>{
   
   loader(false);
 }
-// details info 
+//modal details information
 const categoryDetailsInfo = (NewsId) =>{
   let url = `https://openapi.programming-hero.com/api/news/${NewsId}`
       fetch(url)
@@ -132,5 +134,4 @@ let modalBody = document.getElementById('modal_info')
   <p>Publish Date : ${categoryInfo.author.published_date ? categoryInfo.author.published_date : "No Data Available"}</p>
   `
 }
-
 loadNews()
