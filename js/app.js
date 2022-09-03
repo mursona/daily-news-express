@@ -62,12 +62,12 @@ const CetegoriesDetails = (newsPosts) =>{
   })
   newsSorting.forEach(news =>{
       let div = document.createElement('div')
-          div.classList.add('row', 'bg-color', 'm-5')
+          div.classList.add('row', 'bg-color', 'my-5', 'px-5')
           div.innerHTML = `
-          <div class="col-md-4">
+          <div class="col-md-3">
           <img src="${news.thumbnail_url}" class="img-fluid rounded-start" alt="...">
          </div>
-         <div class="col-md-8">
+         <div class="col-md-9 mt-3 mb-3 bg-white">
          <div class="card-body">
            <h5 class="card-title">${news.title}</h5>
            <p class="card-text">${news.details.slice(0,500)}<span>
@@ -97,7 +97,7 @@ const CetegoriesDetails = (newsPosts) =>{
             </div>
             </div>
           </div>
-    </div>`
+    </div>`;
       categoriesDiv.appendChild(div)
   })
   
