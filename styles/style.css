@@ -4,3 +4,9 @@ body{
 .bg-color{
     background-color: rgba(232, 222, 222, 0.279);
 }
+.text-color{
+    color: #0000FD;
+}
+.btn-color{
+    background-color: #0000FD;
+}
