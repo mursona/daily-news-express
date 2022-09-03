@@ -11,6 +11,16 @@ const loadNews = () =>{
       .catch(error => console.log(error))
 }
 
+const loader = isLoad => {
+  const loader = document.getElementById('page-loader');
+  if (isLoad) {
+      loader.classList.remove('d-none');
+  }
+  else {
+      loader.classList.add('d-none');
+  }
+}
+
 const dafaultCategoriesShow = () =>{
   let url = `https://openapi.programming-hero.com/api/news/category/01`
       fetch(url)
@@ -38,6 +48,7 @@ const navbarItems = (navitems) =>{
 
 // all cetegories  show
 const displayDetails = (Id) =>{
+  loader(true);
   let url = `https://openapi.programming-hero.com/api/news/category/${Id}`
       fetch(url)
       .then(res => res.json())
@@ -47,7 +58,6 @@ const displayDetails = (Id) =>{
 }
 // categories details 
 const CetegoriesDetails = (newsPosts) =>{
-  spinners(true)
   let totalNewsItem = newsPosts.length
   let categoryShowing = document.getElementById('category-showing')
       categoryShowing.innerHTML = ' '
@@ -99,9 +109,9 @@ const CetegoriesDetails = (newsPosts) =>{
           </div>
     </div>`;
       categoriesDiv.appendChild(div)
-  })
+  });
   
-  spinners(false)
+  loader(false);
 }
 // details info 
 const categoryDetailsInfo = (NewsId) =>{
@@ -122,14 +132,5 @@ let modalBody = document.getElementById('modal_info')
   <p>Publish Date : ${categoryInfo.author.published_date ? categoryInfo.author.published_date : "No Data Available"}</p>
   `
 }
-// spinner spinners 
-const spinners = (isspinners) =>{
-      let spinnner = document.getElementById('spinner')
-      if(isspinners){
-          spinnner.classList.remove('d-none')
-      }else{
-          spinnner.classList.add('d-none')
-      }
-  }
 
 loadNews()
