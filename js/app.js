@@ -14,14 +14,14 @@ const displayNews = (categories) => {
       const categoryDiv = document.createElement('li');
       categoryDiv.classList.add('nav-item', 'd-block');
       categoryDiv.innerHTML = `
-      <a class="nav-link disabled" href="#">${category.category_name}</a>`;
+      <a class="nav-link" href="#">${category.category_name}</a>`;
       displayCategory.appendChild(categoryDiv);
   });
 }
 
 
 const loadNewsBlog = () =>{
-  fetch('https://openapi.programming-hero.com/api/news/category/01')
+  fetch(`https://openapi.programming-hero.com/api/news/category/01`)
   .then(res => res.json())
   .then(data => displayDailyNews(data.data))
 }
@@ -47,14 +47,13 @@ const displayDailyNews = news =>{
               <div class="flex-shrink-0">
               <img src="${news.author.img}" class="rounded-circle" style="width: 60px;" alt="Avatar"/>
               </div>
-              <div class="flex-grow-1 ms-3">
+              <div class="flex-grow-1 ms-2">
                 <h5 class="mb-1">${news.author.name}</h5>
                 <p class="mb-2 pb-1" style="color: #2b2a2a;">${news.author.published_date}
                 </p>
               </div>
               <div class="flex-grow-1 ms-5">
-              <h5 class="mb-1">${news.author.name}</h5>
-              <p class="mb-2 pb-1" style="color: #2b2a2a;">${news.author.published_date}
+              <p class="mb-2 pb-1" style="color: #2b2a2a;">${news.total_view}
               </p>
             </div>
               </div>
